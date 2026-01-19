@@ -46,6 +46,38 @@
                 <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
             </div>
         </div>
+        <div class="slide" style="background-image: url('21.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <img src="22.jpg" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">Join the Movement</h1>
+                <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('1201.jpg');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <img src="22.jpg" alt="Logo" class="slide-logo">
+                <h1 class="slide-title">Donate For Social Activities</h1>
+                <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="about">
+    <h2>Mission & Vision</h2>
+    <div class="cards">
+        <div class="card1">
+            <i class="fas fa-bullseye icon-size"></i>
+            <h3>Mission</h3>
+            <p>To implement activities according to the 17 SDG goals of Bangladesh.</p>
+        </div>
+        <div class="card1">
+            <i class="fas fa-eye icon-size"></i>
+            <h3>Vision</h3>
+            <p>To build a just, poverty-free, and educated society.</p>
+        </div>
     </div>
 </section>
 
@@ -53,40 +85,57 @@
     <h2 class="success-title">Our Successful Stories</h2>
     <div class="success-container">
         <div class="success-track" id="success-track">
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="21.jpg" alt="Event">
+                    <h3>Education Campaign</h3>
+                    <p>Providing books and learning materials to underprivileged children.</p>
+                </div>
             </div>
-    </div>
-</section>
-
-<section class="gallery-section">
-    <div class="gallery-header">
-        <h2>YIBD Gallery</h2>
-    </div>
-    <div class="gallery-container" id="gallery-grid">
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="1201.jpg" alt="Event">
+                    <h3>Winter Support</h3>
+                    <p>Over 500 families received warm clothes during the severe winter.</p>
+                </div>
+            </div>
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="22.jpg" alt="Event">
+                    <h3>Tree Plantation</h3>
+                    <p>Planting trees across the country for a greener Bangladesh.</p>
+                </div>
+            </div>
         </div>
+    </div>
 </section>
 
 <footer class="modern-footer" id="contact">
     <div class="footer-top">
         <div class="footer-col about">
-            <div class="footer-logo-container">
-                <img src="22.jpg" alt="Logo" class="footer-logo-pretty">
-            </div>
+            <img src="22.jpg" alt="Logo" class="footer-logo">
             <h3>Youth Inspiration Bangladesh</h3>
-            <p>Empowering Humanity Through Youth Inspiration.</p>
+            <p>Empowering Humanity Through Youth Inspiration. We work for social justice, education, and health.</p>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
             </div>
         </div>
         <div class="footer-col links">
             <h4>Quick Links</h4>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="member.html">Member</a></li>
                 <li><a href="event.html">Recent Events</a></li>
+                <li><a href="blood_bond.html">Blood Bond</a></li>
             </ul>
         </div>
         <div class="footer-col contact">
             <h4>Contact Info</h4>
+            <p><i class="fas fa-map-marker-alt"></i> Mymensingh, Bangladesh</p>
+            <p><i class="fas fa-phone"></i> +880 1XXX XXXXXX</p>
             <p><i class="fas fa-envelope"></i> youthinspirationbangladesh@gmail.com</p>
         </div>
     </div>
@@ -96,59 +145,23 @@
 </footer>
 
 <script>
-    // Menu Toggle
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
     // Hero Slider
     const hTrack = document.getElementById('slider-track');
     let hIndex = 0;
     setInterval(() => {
-        hIndex = (hIndex + 1) % 2;
+        hIndex = (hIndex + 1) % 4;
         hTrack.style.left = `-${hIndex * 100}%`;
     }, 5000);
 
-    // Fetch Events for Success Stories
-    fetch('event.json')
-        .then(response => response.json())
-        .then(data => {
-            const track = document.getElementById('success-track');
-            // Show latest 4 events as successful stories
-            data.slice(0, 4).forEach(event => {
-                const slide = document.createElement('div');
-                slide.className = 'success-slide';
-                slide.innerHTML = `
-                    <div class="success-card">
-                        <img src="${event.image}" alt="${event.title}">
-                        <h3>${event.title}</h3>
-                        <p>${event.description.substring(0, 80)}...</p>
-                    </div>
-                `;
-                track.appendChild(slide);
-            });
-            startSuccessSlider(data.length);
-        });
-
-    function startSuccessSlider(count) {
-        const sTrack = document.getElementById('success-track');
-        let sIndex = 0;
-        setInterval(() => {
-            sIndex = (sIndex + 1) % (count - 2); // Adjust based on 3 visible cards
-            sTrack.style.transform = `translateX(-${sIndex * (100 / 3)}%)`;
-        }, 4000);
-    }
-
-    // Fetch Gallery
-    fetch('gallery.json')
-        .then(response => response.json())
-        .then(data => {
-            const grid = document.getElementById('gallery-grid');
-            data.forEach((item, index) => {
-                const div = document.createElement('div');
-                div.className = `gallery-item shape-${(index % 4) + 1}`;
-                div.innerHTML = `<img src="${item.image}" alt="Gallery Pic">`;
-                grid.appendChild(div);
-            });
-        });
+    // Success Stories Slider (Slow Side-by-Side)
+    const sTrack = document.getElementById('success-track');
+    let sIndex = 0;
+    setInterval(() => {
+        sIndex = (sIndex + 1) % 3;
+        sTrack.style.left = `-${sIndex * 100}%`;
+    }, 4500);
 </script>
 
 </body>
