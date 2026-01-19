@@ -456,3 +456,69 @@ th { background: #f8f8f8; }
     .slide-title { font-size: 1.6rem; }
     .hero-slider-container { height: 70vh; }
 }
+/* Success Stories Slider */
+.success-section {
+    background: #004d00; /* Dark Green */
+    padding: 60px 0;
+    text-align: center;
+    color: white;
+}
+
+.success-title {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.success-slider-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+}
+
+.success-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out;
+    width: 300%; /* total stories (3) * 100% */
+}
+
+.success-slide {
+    width: 100%;
+}
+
+.success-card {
+    background: white;
+    color: #333;
+    margin: 10px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.success-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.success-info {
+    padding: 20px;
+}
+
+.success-info h3 {
+    color: #006400;
+    margin-bottom: 10px;
+}
+
+.success-info p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .success-slider-container { max-width: 95%; }
+    .success-card img { height: 200px; }
+    .success-title { font-size: 1.8rem; }
+}
