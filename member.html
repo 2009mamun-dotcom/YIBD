@@ -87,27 +87,32 @@
     menuBtn.onclick = () => menu.classList.toggle('show');
 
     // Function to load members from specific JSON files
-    function loadBoard(fileName, element) {
+ function loadBoard(fileName, element) {
         // Update active class on buttons
         document.querySelectorAll('.icon-btn').forEach(btn => btn.classList.remove('active'));
-        element.classList.add('active');
+        if(element) element.classList.add('active');
 
         const container = document.getElementById('memberList');
         container.innerHTML = `<div class="loader">Loading members...</div>`;
 
-        fetch(fileName)
+        // "./" যোগ করা হয়েছে যাতে বর্তমান ডিরেক্টরি থেকে ফাইল নেয়
+        fetch('./' + fileName)
             .then(res => {
-                if (!res.ok) throw new Error('File not found');
+                if (!res.ok) throw new Error('File not found: ' + fileName);
                 return res.json();
             })
             .then(data => {
                 container.innerHTML = "";
+                if(data.length === 0) {
+                    container.innerHTML = "<p>No members found.</p>";
+                    return;
+                }
                 data.forEach(m => {
                     container.innerHTML += `
                         <div class="member-card">
                             <div class="id-header">OFFICIAL ID: ${m.id}</div>
                             <div class="card-body">
-                                <img src="${m.photo}" alt="${m.name}" class="member-photo">
+                                <img src="${m.photo}" alt="${m.name}" class="member-photo" onerror="this.src='https://via.placeholder.com/110'">
                                 <h3>${m.name}</h3>
                                 <p class="designation">${m.designation}</p>
                                 <hr>
@@ -120,6 +125,11 @@
                     `;
                 });
             })
+            .catch(err => {
+                container.innerHTML = `<p style="color:red; padding:20px;">Error: JSON file "${fileName}" not found or format is wrong.</p>`;
+                console.error(err);
+            });
+    }
             .catch(err => {
                 container.innerHTML = `<p style="color:red;">No members found for this board.</p>`;
                 console.error(err);
