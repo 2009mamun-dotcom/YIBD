@@ -356,92 +356,74 @@ th { background: #f8f8f8; }
 @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
 }
-/* Hero Sliding Section */
+/* Hero Slider - Enhanced Slow Motion */
 .hero-blur {
     height: 85vh;
     background-size: cover;
     background-position: center;
     position: relative;
-    overflow: hidden; /* Hide slides outside the viewport */
-    transition: background-image 1.2s ease-in-out; /* Smooth BG transition */
+    overflow: hidden;
+    transition: background-image 2s cubic-bezier(0.4, 0, 0.2, 1); /* Slower Background Fade */
 }
 
 .hero-blur::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.45); /* Overlay */
-    backdrop-filter: blur(20px); /* Deep Blur */
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(20px);
     z-index: 1;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    height: 100%;
 }
 
 .slider-wrapper {
     display: flex;
-    width: 400%; /* Total slides (4) * 100 */
+    width: 400%;
     height: 100%;
-    transition: transform 1s cubic-bezier(0.65, 0, 0.35, 1); /* Side sliding animation */
+    /* Cubic-bezier defines the 'slow start-fast-slow end' feel */
+    transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .slide {
-    width: 25%; /* 100% / Total slides */
-    height: 100%;
+    width: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .slide-inner {
-    max-width: 800px;
-    padding: 0 20px;
     text-align: center;
-    color: white;
+    opacity: 0.9;
+    transform: scale(0.95);
+    transition: all 1.5s ease;
 }
 
-.slide-img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 4px solid #9ACD32;
-    margin-bottom: 25px;
-    box-shadow: 0 0 20px rgba(154, 205, 50, 0.4);
+/* Current active slide effect */
+.slider-wrapper[style*="translateX"] .slide-inner {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.slide-heading {
-    font-size: 2.8rem;
-    font-weight: bold;
-    margin-bottom: 30px;
-    line-height: 1.2;
-    text-shadow: 2px 4px 10px rgba(0,0,0,0.6);
+/* Mission & Vision Slider */
+.mission-slider-container {
+    max-width: 400px;
+    margin: 40px auto;
+    overflow: hidden;
+    border-radius: 15px;
 }
 
-.btn-primary {
-    background: #006400;
-    color: white;
-    padding: 16px 45px;
-    border-radius: 35px;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.1rem;
-    display: inline-block;
-    transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+.mission-wrapper {
+    display: flex;
+    transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
 }
 
-.btn-primary:hover {
-    background: #9ACD32;
-    color: #004d00;
-    transform: scale(1.05);
+.mission-card {
+    min-width: 100%; /* Each card takes full width of container */
+    box-sizing: border-box;
+    margin: 0 !important;
 }
 
+/* Standard Header/Menu classes stay same as before */
 @media (max-width: 768px) {
     .slide-heading { font-size: 1.8rem; }
-    .slide-img { width: 100px; height: 100px; }
-    .hero-blur { height: 75vh; }
+    .mission-slider-container { max-width: 90%; }
 }
