@@ -356,7 +356,7 @@ th { background: #f8f8f8; }
 @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
 }
-/* Hero Slider Side-by-Side */
+/* Hero Container & Simple Slide */
 .hero-container {
     width: 100%;
     height: 80vh;
@@ -368,7 +368,7 @@ th { background: #f8f8f8; }
     display: flex;
     width: 400%; /* 4 Slides */
     height: 100%;
-    transition: transform 1.5s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: transform 0.8s ease-in-out; /* Simple Linear feel transition */
 }
 
 .slide {
@@ -382,70 +382,78 @@ th { background: #f8f8f8; }
     position: relative;
 }
 
-/* Background Blur Effect for each slide */
+/* Background Images & Full Blur */
+.slide1 { background-image: url('21.jpg'); }
+.slide2 { background-image: url('1201.jpg'); }
+
 .slide::before {
     content: "";
     position: absolute;
     inset: 0;
-    backdrop-filter: blur(15px); /* Full Blur */
-    background: rgba(0,0,0,0.3);
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px); /* Fully Blur Background */
+    z-index: 1;
 }
 
 .slide-content {
     position: relative;
-    z-index: 5;
+    z-index: 2;
     text-align: center;
     color: white;
-    padding: 20px;
 }
 
 .slide-logo {
-    width: 100px;
-    height: 100px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     border: 3px solid #9ACD32;
     margin-bottom: 20px;
 }
 
 .slide-title {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 30px;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+    padding: 0 10%;
 }
 
 .join-btn {
-    padding: 12px 35px;
+    padding: 14px 40px;
     background: #006400;
     color: white;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 30px;
     font-weight: bold;
+    display: inline-block;
     transition: 0.3s;
 }
 
-.join-btn:hover { background: #9ACD32; color: #004d00; }
+.join-btn:hover {
+    background: #9ACD32;
+    color: #004d00;
+}
 
-/* Mission Slider */
-.mission-section { text-align: center; padding: 50px 0; overflow: hidden; }
-.mission-container {
-    max-width: 350px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-.mission-track {
+/* Mission & Vision Original Static Design */
+.cards {
     display: flex;
-    width: 200%;
-    transition: transform 1s ease-in-out;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 20px;
 }
-.mission-card {
-    width: 50%;
-    padding: 30px;
+
+.card1 {
     background: white;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 30px;
     border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: center;
 }
-.mission-card i { font-size: 40px; color: #006400; margin-bottom: 15px; }
+
+.icon-size { font-size: 40px; color: #006400; margin-bottom: 15px; }
 
 @media (max-width: 768px) {
-    .slide-title { font-size: 1.6rem; }
+    .slide-title { font-size: 1.8rem; }
+    .hero-container { height: 70vh; }
 }
