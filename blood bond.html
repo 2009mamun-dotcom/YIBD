@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Bond - Youth Inspiration Bangladesh</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="22.jpg" alt="Logo">
+        <div class="logo-text">
+            <h1>Youth Inspiration Bangladesh</h1>
+            <p>Empowering Humanity Through Youth Inspiration</p>
+        </div>
+    </div>
+    <div class="menu-icon" id="menu-btn">☰</div>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="member.html">Member</a>
+        <a href="event.html">Event</a>
+        <a href="blood_bond.html" class="active" style="color:#9acd32">Blood Bond</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="blood-hero">
+    <div class="hero-content">
+        <h1>🩸 Blood Bond Program</h1>
+        <p>Donate Blood, Save Lives. Connect with donors across the country.</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="grid">
+        <div class="section-card">
+            <h3><i class="fas fa-plus-circle"></i> Donor Registration</h3>
+            <form id="donorForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter name" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
+                </div>
+                <div class="form-group">
+                    <label>District</label>
+                    <input type="text" id="district" placeholder="Your District" required>
+                </div>
+                <div class="form-group">
+                    <label>Blood Group</label>
+                    <select id="blood" required>
+                        <option value="">Select</option>
+                        <option>A+</option><option>A-</option>
+                        <option>B+</option><option>B-</option>
+                        <option>AB+</option><option>AB-</option>
+                        <option>O+</option><option>O-</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; background: #d32f2f;">Register Now</button>
+            </form>
+        </div>
+
+        <div>
+            <div class="section-card">
+                <h3><i class="fas fa-chart-bar"></i> Blood Statistics</h3>
+                <div class="stats-box">
+                    <div>
+                        <p>Total Donors</p>
+                        <h1 id="totalCount">0</h1>
+                    </div>
+                    <canvas id="bloodChart" width="200" height="100"></canvas>
+                </div>
+            </div>
+            <div class="section-card">
+                <h3><i class="fas fa-search"></i> Search Donor</h3>
+                <input type="text" id="searchDonor" placeholder="Search by Blood Group or District..." onkeyup="filterDonors()">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card" style="margin-top: 20px;">
+        <h3><i class="fas fa-list"></i> Registered Donors</h3>
+        <div style="overflow-x:auto;">
+            <table id="donorTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Blood Group</th>
+                        <th>District</th>
+                        <th>Contact</th>
+                    </tr>
+                </thead>
+                <tbody id="donorList">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="22.jpg" alt="Logo" class="footer-logo">
+            <h2>Youth Inspiration Bangladesh</h2>
+            <p>Empowering Humanity Through Youth Inspiration</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blood_bond.html">Blood Bond</a></li>
+                <li><a href="member.html">Members</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        &copy; 2026 Youth Inspiration Bangladesh | All Rights Reserved.
+    </div>
+</footer>
+
+<script>
+    // LocalStorage initialization
+    let donors = JSON.parse(localStorage.getItem('yibd_donors')) || [];
+
+    // Load initial data from JSON if available
+    fetch('donors.json')
+    .then(res => res.json())
+    .then(data => {
+        // Merge JSON data with local storage data (prevent duplicates)
+        const combined = [...data, ...donors];
+        const unique = combined.filter((v,i,a)=>a.findIndex(t=>(t.phone === v.phone))===i);
+        renderDonors(unique);
+    })
+    .catch(() => renderDonors(donors));
+
+    // Form Submit
+    document.getElementById('donorForm').onsubmit = function(e) {
+        e.preventDefault();
+        const newDonor = {
+            name: document.getElementById('name').value,
+            phone: document.getElementById('phone').value,
+            district: document.getElementById('district').value,
+            blood: document.getElementById('blood').value
+        };
+        donors.push(newDonor);
+        localStorage.setItem('yibd_donors', JSON.stringify(donors));
+        alert("Registration Successful!");
+        location.reload();
+    };
+
+    function renderDonors(list) {
+        const listBody = document.getElementById('donorList');
+        listBody.innerHTML = "";
+        list.forEach(d => {
+            listBody.innerHTML += `
+                <tr>
+                    <td>${d.name}</td>
+                    <td><span class="blood-badge">${d.blood}</span></td>
+                    <td>${d.district}</td>
+                    <td><a href="tel:${d.phone}" class="call-btn"><i class="fas fa-phone"></i> ${d.phone}</a></td>
+                </tr>
+            `;
+        });
+        document.getElementById('totalCount').innerText = list.length;
+        drawChart(list);
+    }
+
+    function filterDonors() {
+        let key = document.getElementById('searchDonor').value.toLowerCase();
+        let filtered = donors.filter(d => 
+            d.blood.toLowerCase().includes(key) || 
+            d.district.toLowerCase().includes(key)
+        );
+        renderDonors(filtered);
+    }
+
+    function drawChart(list) {
+        const canvas = document.getElementById('bloodChart');
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0, canvas.width, canvas.height);
+        let groups = {"A+":0,"B+":0,"O+":0,"AB+":0,"A-":0,"B-":0,"O-":0,"AB-":0};
+        list.forEach(d => groups[d.blood]++);
+        
+        let x = 10;
+        for (let g in groups) {
+            let h = groups[g] * 10;
+            ctx.fillStyle = "#d32f2f";
+            ctx.fillRect(x, 80-h, 15, h);
+            ctx.fillStyle = "#333";
+            ctx.font = "10px Arial";
+            ctx.fillText(g, x, 95);
+            x += 24;
+        }
+    }
+
+    document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
+</script>
+
+</body>
+</html>
