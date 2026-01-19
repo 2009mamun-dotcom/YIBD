@@ -34,5 +34,59 @@
     "location": "Jamalpur",
     "photo": "168904.jpg",
     "fbLink": "https://facebook.com/Md. Nur Al Jannat "
+  },
+    {
+    "id": "YIBD-CB-202503",
+    "name": "Mahmuda akter",
+    "bloodGroup": "A+",
+    "designation": "Genarel Secretary",
+    "location": "Mymensingh",
+    "photo": "168905.jpg",
+    "fbLink": "https://facebook.com/Mahmuda akter"
+  },
+   {
+    "id": "YIBD-CB-202504",
+    "name": "Abdullah Al Shihab ",
+    "bloodGroup": "A+",
+    "designation": "Organizing Secretary",
+    "location": "Jamalpur",
+    "photo": "168906.jpg",
+    "fbLink": "https://facebook.com/Abdullah Al Shihab "
+  },
+   {
+    "id": "YIBD-CB-202506",
+    "name": "Md.Abdullah Al Mamun ",
+    "bloodGroup": "O+",
+    "designation": "Organizing Secretary",
+    "location": "Sherpur,Mymensingh",
+    "photo": "1212.jpg",
+    "fbLink": "https://facebook.com/Md.Abdullah Al Mamun "
+  },
+    {
+    "id": "YIBD-CB-202505",
+    "name": "Md Sifat Al Mahin ",
+    "bloodGroup": "B+",
+    "designation": "Public Relation & Communecation Secretary",
+    "location": "Mymensingh",
+    "photo": "168907.jpg",
+    "fbLink": "https://facebook.com/Md Sifat Al Mahin "
+  },
+   {
+    "id": "YIBD-CB-202507",
+    "name": "Tauman jahan mahin",
+    "bloodGroup": "B+",
+    "designation": "Monitoring & Innovation Secretary",
+    "location": "Mymensingh",
+    "photo": "168908.jpg",
+    "fbLink": "https://facebook.com/Tauman jahan mahin "
+  },
+  {
+    "id": "YIBD-CB-202508",
+    "name": "Mahdi Hasan Shihab",
+    "bloodGroup": "A+",
+    "designation": "Media Manager",
+    "location": "Mymensingh",
+    "photo": "168909.jpg",
+    "fbLink": "https://facebook.com/Mahdi Hasan Shihab "
   }
 ]
