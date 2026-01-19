@@ -28,43 +28,35 @@
     </nav>
 </header>
 
-<section class="hero-blur" id="hero-section">
+<section class="hero-blur">
     <div class="hero-content">
-        <div class="slider-wrapper" id="slider-wrapper">
-            <div class="slide" data-bg="21.jpg">
-                <div class="slide-inner">
-                    <img src="22.jpg" alt="Icon" class="slide-img">
-                    <h1 class="slide-heading">Empowering Humanity Through Youth Inspiration</h1>
-                    <div class="hero-btns">
-                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
-                    </div>
+        <div id="slider">
+            <div class="slide active">
+                <img src="22.jpg" alt="Icon" class="slide-img">
+                <h1 class="slide-heading">Empowering Humanity Through Youth Inspiration</h1>
+                <div class="hero-btns">
+                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
                 </div>
             </div>
-            <div class="slide" data-bg="1201.jpg">
-                <div class="slide-inner">
-                    <img src="22.jpg" alt="Icon" class="slide-img">
-                    <h1 class="slide-heading">Join Youth Inspiration Bangladesh</h1>
-                    <div class="hero-btns">
-                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
-                    </div>
+            <div class="slide">
+                <img src="22.jpg" alt="Icon" class="slide-img">
+                <h1 class="slide-heading">Join Youth Inspiration Bangladesh</h1>
+                <div class="hero-btns">
+                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
                 </div>
             </div>
-            <div class="slide" data-bg="21.jpg">
-                <div class="slide-inner">
-                    <img src="22.jpg" alt="Icon" class="slide-img">
-                    <h1 class="slide-heading">Join the Movement</h1>
-                    <div class="hero-btns">
-                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
-                    </div>
+            <div class="slide">
+                <img src="22.jpg" alt="Icon" class="slide-img">
+                <h1 class="slide-heading">Join the Movement</h1>
+                <div class="hero-btns">
+                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
                 </div>
             </div>
-            <div class="slide" data-bg="1201.jpg">
-                <div class="slide-inner">
-                    <img src="22.jpg" alt="Icon" class="slide-img">
-                    <h1 class="slide-heading">Donate For Social Activities</h1>
-                    <div class="hero-btns">
-                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
-                    </div>
+            <div class="slide">
+                <img src="22.jpg" alt="Icon" class="slide-img">
+                <h1 class="slide-heading">Donate For Social Activities</h1>
+                <div class="hero-btns">
+                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
                 </div>
             </div>
         </div>
@@ -73,23 +65,21 @@
 
 <section class="section" id="about">
     <h2>Mission & Vision</h2>
-    <div class="mission-slider-container">
-        <div class="mission-wrapper" id="mission-wrapper">
-            <div class="card1 mission-card">
-                <i class="fas fa-bullseye icon-size"></i>
-                <h3>Mission</h3>
-                <p>To implement activities according to the 17 Sustainable Development Goals (SDG) of Bangladesh.</p>
-            </div>
-            <div class="card1 mission-card">
-                <i class="fas fa-eye icon-size"></i>
-                <h3>Vision</h3>
-                <p>To build a just, poverty-free, and educated society where youth contribute to national development.</p>
-            </div>
+    <div class="cards">
+        <div class="card1">
+            <i class="fas fa-bullseye icon-size"></i>
+            <h3>Mission</h3>
+            <p>To implement activities according to the 17 Sustainable Development Goals (SDG) of Bangladesh.</p>
+        </div>
+        <div class="card1">
+            <i class="fas fa-eye icon-size"></i>
+            <h3>Vision</h3>
+            <p>To build a just, poverty-free, and educated society where youth contribute to national development.</p>
         </div>
     </div>
 </section>
 
-<section class="contact-section" id="contact" style="background: #fff; padding: 50px 5%; text-align: center;">
+<section class="contact-section" id="contact" style="padding: 50px 5%; text-align: center; background: #fff;">
     <h2>Contact Us</h2>
     <div class="contact-container">
         <p><i class="fas fa-envelope"></i> <strong>Gmail:</strong> youthinspirationbangladesh@gmail.com</p>
@@ -100,43 +90,41 @@
 </section>
 
 <footer>
-    <div class="footer-bottom" style="text-align: center; padding: 20px; background: #006400; color: white;">
+    <div class="footer-container">
+        <div class="footer-col">
+            <img src="22.jpg" alt="Logo" style="height: 60px;">
+            <h2>Youth Inspiration Bangladesh</h2>
+            <p>Empowering Humanity Through Youth Inspiration</p>
+        </div>
+        <div class="footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="member.html">Member</a></li>
+                <li><a href="blood_bond.html">Blood Bond</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
         &copy; 2026 Youth Inspiration Bangladesh
     </div>
 </footer>
 
 <script>
-    // Menu Toggle
+    // Menu toggle
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
-    // Hero Slider
-    const wrapper = document.getElementById('slider-wrapper');
-    const heroSection = document.getElementById('hero-section');
-    const slides = document.querySelectorAll('.slide');
+    // Slide logic
+    let slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
-    function updateHeroSlider() {
-        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        let newBg = slides[currentSlide].getAttribute('data-bg');
-        heroSection.style.backgroundImage = `url('${newBg}')`;
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
     }
 
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % slides.length;
-        updateHeroSlider();
-    }, 6000); // 6 seconds for a slower, calmer feel
-
-    // Mission Slider
-    const missionWrapper = document.getElementById('mission-wrapper');
-    let missionIndex = 0;
-
-    setInterval(() => {
-        missionIndex = (missionIndex + 1) % 2;
-        missionWrapper.style.transform = `translateX(-${missionIndex * 100}%)`;
-    }, 5000);
-
-    // Set initial BG
-    heroSection.style.backgroundImage = `url('${slides[0].getAttribute('data-bg')}')`;
+    setInterval(nextSlide, 4000); // প্রতি ৪ সেকেন্ড পর পর স্লাইড হবে
 </script>
 
 </body>
