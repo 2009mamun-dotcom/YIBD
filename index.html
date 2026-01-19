@@ -73,16 +73,18 @@
 
 <section class="section" id="about">
     <h2>Mission & Vision</h2>
-    <div class="cards">
-        <div class="card1">
-            <i class="fas fa-bullseye icon-size"></i>
-            <h3>Mission</h3>
-            <p>To implement activities according to the 17 Sustainable Development Goals (SDG) of Bangladesh.</p>
-        </div>
-        <div class="card1">
-            <i class="fas fa-eye icon-size"></i>
-            <h3>Vision</h3>
-            <p>To build a just, poverty-free, and educated society where youth contribute to national development.</p>
+    <div class="mission-slider-container">
+        <div class="mission-wrapper" id="mission-wrapper">
+            <div class="card1 mission-card">
+                <i class="fas fa-bullseye icon-size"></i>
+                <h3>Mission</h3>
+                <p>To implement activities according to the 17 Sustainable Development Goals (SDG) of Bangladesh.</p>
+            </div>
+            <div class="card1 mission-card">
+                <i class="fas fa-eye icon-size"></i>
+                <h3>Vision</h3>
+                <p>To build a just, poverty-free, and educated society where youth contribute to national development.</p>
+            </div>
         </div>
     </div>
 </section>
@@ -98,15 +100,8 @@
 </section>
 
 <footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <img src="22.jpg" alt="Logo" style="height: 60px;">
-            <h2>Youth Inspiration Bangladesh</h2>
-            <p>Empowering Humanity Through Youth Inspiration</p>
-        </div>
-    </div>
-    <div class="footer-bottom" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-        &copy; 2026 Youth Inspiration Bangladesh | Designed by CodeLab
+    <div class="footer-bottom" style="text-align: center; padding: 20px; background: #006400; color: white;">
+        &copy; 2026 Youth Inspiration Bangladesh
     </div>
 </footer>
 
@@ -114,30 +109,34 @@
     // Menu Toggle
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
-    // Slider Script
+    // Hero Slider
     const wrapper = document.getElementById('slider-wrapper');
     const heroSection = document.getElementById('hero-section');
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
-    function updateSlider() {
-        // Horizontal Move
+    function updateHeroSlider() {
         wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
-        
-        // Dynamic Background Change
         let newBg = slides[currentSlide].getAttribute('data-bg');
         heroSection.style.backgroundImage = `url('${newBg}')`;
     }
 
-    function autoSlide() {
+    setInterval(() => {
         currentSlide = (currentSlide + 1) % slides.length;
-        updateSlider();
-    }
+        updateHeroSlider();
+    }, 6000); // 6 seconds for a slower, calmer feel
 
-    // Initialize first background
+    // Mission Slider
+    const missionWrapper = document.getElementById('mission-wrapper');
+    let missionIndex = 0;
+
+    setInterval(() => {
+        missionIndex = (missionIndex + 1) % 2;
+        missionWrapper.style.transform = `translateX(-${missionIndex * 100}%)`;
+    }, 5000);
+
+    // Set initial BG
     heroSection.style.backgroundImage = `url('${slides[0].getAttribute('data-bg')}')`;
-
-    setInterval(autoSlide, 5000); // 5 Seconds Interval
 </script>
 
 </body>
