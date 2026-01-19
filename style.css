@@ -356,42 +356,42 @@ th { background: #f8f8f8; }
 @media (max-width: 768px) {
     .grid { grid-template-columns: 1fr; }
 }
-/* Hero Container & Simple Slide */
-.hero-container {
+/* Hero Slider Styling */
+.hero-slider-container {
     width: 100%;
     height: 80vh;
     overflow: hidden;
     position: relative;
+    background: #000;
 }
 
 .slider-track {
-    display: flex;
-    width: 400%; /* 4 Slides */
+    width: 400%; /* ৪টি স্লাইড তাই ৪০০% */
     height: 100%;
-    transition: transform 0.8s ease-in-out; /* Simple Linear feel transition */
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    transition: left 0.8s ease-in-out; /* স্লাইড হওয়ার গতি */
 }
 
 .slide {
-    width: 25%;
+    width: 25%; /* ১০০% স্ক্রিন উইডথ */
     height: 100%;
     background-size: cover;
     background-position: center;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
 }
 
-/* Background Images & Full Blur */
-.slide1 { background-image: url('21.jpg'); }
-.slide2 { background-image: url('1201.jpg'); }
-
-.slide::before {
-    content: "";
+/* Background Full Blur */
+.slide-overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px); /* Fully Blur Background */
+    backdrop-filter: blur(15px); /* ব্লার ইফেক্ট */
     z-index: 1;
 }
 
@@ -400,29 +400,30 @@ th { background: #f8f8f8; }
     z-index: 2;
     text-align: center;
     color: white;
+    padding: 20px;
 }
 
 .slide-logo {
-    width: 110px;
-    height: 110px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     border: 3px solid #9ACD32;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .slide-title {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-    padding: 0 10%;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 25px;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 
 .join-btn {
-    padding: 14px 40px;
+    padding: 12px 35px;
     background: #006400;
     color: white;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 25px;
     font-weight: bold;
     display: inline-block;
     transition: 0.3s;
@@ -433,13 +434,13 @@ th { background: #f8f8f8; }
     color: #004d00;
 }
 
-/* Mission & Vision Original Static Design */
+/* Mission & Vision Styling (Static) */
 .cards {
     display: flex;
     justify-content: center;
     gap: 20px;
     flex-wrap: wrap;
-    padding: 20px;
+    padding: 40px 20px;
 }
 
 .card1 {
@@ -447,13 +448,11 @@ th { background: #f8f8f8; }
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    width: 300px;
+    width: 320px;
     text-align: center;
 }
 
-.icon-size { font-size: 40px; color: #006400; margin-bottom: 15px; }
-
 @media (max-width: 768px) {
-    .slide-title { font-size: 1.8rem; }
-    .hero-container { height: 70vh; }
+    .slide-title { font-size: 1.6rem; }
+    .hero-slider-container { height: 70vh; }
 }
