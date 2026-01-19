@@ -320,3 +320,39 @@ footer { background: var(--primary); color: white; padding: 50px 10%; margin-top
 }
 
 .social-links a:hover { transform: scale(1.2); }
+/* Blood Bond Custom Styles */
+.blood-hero {
+    background: linear-gradient(rgba(211, 47, 47, 0.8), rgba(211, 47, 47, 0.8)), url('21.jpg') no-repeat center/cover;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.container { padding: 20px 5%; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.section-card {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.stats-box { display: flex; align-items: center; justify-content: space-between; }
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+.form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; }
+
+table { width: 100%; border-collapse: collapse; background: white; }
+th, td { padding: 12px; border-bottom: 1px solid #eee; text-align: left; }
+th { background: #f8f8f8; }
+
+.blood-badge { background: #d32f2f; color: white; padding: 3px 8px; border-radius: 5px; font-weight: bold; }
+.call-btn { color: #006400; text-decoration: none; font-weight: bold; }
+
+@media (max-width: 768px) {
+    .grid { grid-template-columns: 1fr; }
+}
