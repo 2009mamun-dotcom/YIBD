@@ -81,6 +81,51 @@
     </div>
 </section>
 
+<section class="success-section">
+    <h2 class="success-title">Our Successful Stories</h2>
+    <div class="success-slider-container">
+        <div class="success-track" id="success-track">
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="21.jpg" alt="Event 1">
+                    <div class="success-info">
+                        <h3>Education Campaign</h3>
+                        <p>Providing books and learning materials to underprivileged children in rural areas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="1201.jpg" alt="Event 2">
+                    <div class="success-info">
+                        <h3>Winter Clothing Distribution</h3>
+                        <p>Over 500 families received warm clothes during the severe winter season.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="success-slide">
+                <div class="success-card">
+                    <img src="22.jpg" alt="Event 3">
+                    <div class="success-info">
+                        <h3>Tree Plantation Drive</h3>
+                        <p>Planting trees across the country to combat climate change and pollution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact" style="background: #fff; padding: 50px 5%; text-align: center;">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <p><i class="fas fa-envelope"></i> <strong>Gmail:</strong> youthinspirationbangladesh@gmail.com</p>
+        <div class="social-links-large" style="margin-top: 20px;">
+            <a href="#" target="_blank" style="color: #006400; font-weight: bold; text-decoration: none;"><i class="fab fa-facebook"></i> Facebook Page</a>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="footer-bottom" style="text-align: center; padding: 20px; background: #006400; color: white;">
         &copy; 2026 Youth Inspiration Bangladesh
@@ -91,20 +136,22 @@
     // Menu
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
-    // Slider Script
+    // Hero Slider Script
     const track = document.getElementById('slider-track');
     let current = 0;
-    const totalSlides = 4;
-
-    function moveSlide() {
-        current++;
-        if (current >= totalSlides) {
-            current = 0;
-        }
+    setInterval(() => {
+        current = (current + 1) % 4;
         track.style.left = `-${current * 100}%`;
-    }
+    }, 5000);
 
-    setInterval(moveSlide, 5000); // ৫ সেকেন্ড পর পর স্লাইড হবে
+    // Success Stories Slider Script
+    const successTrack = document.getElementById('success-track');
+    let successIndex = 0;
+    const totalStories = 3;
+    setInterval(() => {
+        successIndex = (successIndex + 1) % totalStories;
+        successTrack.style.transform = `translateX(-${successIndex * 100}%)`;
+    }, 4000);
 </script>
 
 </body>
