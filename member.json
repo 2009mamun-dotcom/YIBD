@@ -1,0 +1,18 @@
+[
+  {
+    "id": "YIBD-C001",
+    "name": "Abdur Rahman",
+    "board": "central",
+    "designation": "President",
+    "location": "Dhaka",
+    "photo": "member1.jpg"
+  },
+  {
+    "id": "YIBD-D005",
+    "name": "Karim Uddin",
+    "board": "divisional",
+    "designation": "Coordinator",
+    "location": "Chattogram",
+    "photo": "member2.jpg"
+  }
+]
