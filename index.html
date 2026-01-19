@@ -30,33 +30,41 @@
 
 <section class="hero-blur" id="hero-section">
     <div class="hero-content">
-        <div id="slider">
-            <div class="slide active" data-bg="21.jpg">
-                <img src="22.jpg" alt="Icon" class="slide-img">
-                <h1 class="slide-heading">Empowering Humanity Through Youth Inspiration</h1>
-                <div class="hero-btns">
-                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+        <div class="slider-wrapper" id="slider-wrapper">
+            <div class="slide" data-bg="21.jpg">
+                <div class="slide-inner">
+                    <img src="22.jpg" alt="Icon" class="slide-img">
+                    <h1 class="slide-heading">Empowering Humanity Through Youth Inspiration</h1>
+                    <div class="hero-btns">
+                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                    </div>
                 </div>
             </div>
             <div class="slide" data-bg="1201.jpg">
-                <img src="22.jpg" alt="Icon" class="slide-img">
-                <h1 class="slide-heading">Join Youth Inspiration Bangladesh</h1>
-                <div class="hero-btns">
-                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                <div class="slide-inner">
+                    <img src="22.jpg" alt="Icon" class="slide-img">
+                    <h1 class="slide-heading">Join Youth Inspiration Bangladesh</h1>
+                    <div class="hero-btns">
+                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                    </div>
                 </div>
             </div>
             <div class="slide" data-bg="21.jpg">
-                <img src="22.jpg" alt="Icon" class="slide-img">
-                <h1 class="slide-heading">Join the Movement</h1>
-                <div class="hero-btns">
-                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                <div class="slide-inner">
+                    <img src="22.jpg" alt="Icon" class="slide-img">
+                    <h1 class="slide-heading">Join the Movement</h1>
+                    <div class="hero-btns">
+                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                    </div>
                 </div>
             </div>
             <div class="slide" data-bg="1201.jpg">
-                <img src="22.jpg" alt="Icon" class="slide-img">
-                <h1 class="slide-heading">Donate For Social Activities</h1>
-                <div class="hero-btns">
-                    <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                <div class="slide-inner">
+                    <img src="22.jpg" alt="Icon" class="slide-img">
+                    <h1 class="slide-heading">Donate For Social Activities</h1>
+                    <div class="hero-btns">
+                        <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="btn-primary">Join Now</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -79,6 +87,16 @@
     </div>
 </section>
 
+<section class="contact-section" id="contact" style="background: #fff; padding: 50px 5%; text-align: center;">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <p><i class="fas fa-envelope"></i> <strong>Gmail:</strong> youthinspirationbangladesh@gmail.com</p>
+        <div class="social-links-large" style="margin-top: 20px;">
+            <a href="#" target="_blank" style="color: #006400; font-weight: bold; text-decoration: none;"><i class="fab fa-facebook"></i> Facebook Page</a>
+        </div>
+    </div>
+</section>
+
 <footer>
     <div class="footer-container">
         <div class="footer-col">
@@ -87,39 +105,39 @@
             <p>Empowering Humanity Through Youth Inspiration</p>
         </div>
     </div>
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
         &copy; 2026 Youth Inspiration Bangladesh | Designed by CodeLab
     </div>
 </footer>
 
 <script>
-    // Menu toggle
+    // Menu Toggle
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
-    // Slide and Background Logic
-    let slides = document.querySelectorAll('.slide');
-    let heroSection = document.getElementById('hero-section');
+    // Slider Script
+    const wrapper = document.getElementById('slider-wrapper');
+    const heroSection = document.getElementById('hero-section');
+    const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
 
-    function nextSlide() {
-        // Remove active class from current slide
-        slides[currentSlide].classList.remove('active');
+    function updateSlider() {
+        // Horizontal Move
+        wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
         
-        // Move to next slide
-        currentSlide = (currentSlide + 1) % slides.length;
-        
-        // Add active class to new slide
-        slides[currentSlide].classList.add('active');
-        
-        // Change Background Image
+        // Dynamic Background Change
         let newBg = slides[currentSlide].getAttribute('data-bg');
         heroSection.style.backgroundImage = `url('${newBg}')`;
     }
 
-    // Set initial background
+    function autoSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSlider();
+    }
+
+    // Initialize first background
     heroSection.style.backgroundImage = `url('${slides[0].getAttribute('data-bg')}')`;
 
-    setInterval(nextSlide, 4000); // প্রতি ৪ সেকেন্ড পর পর পরিবর্তন হবে
+    setInterval(autoSlide, 5000); // 5 Seconds Interval
 </script>
 
 </body>
