@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Winter Clothes Distribution 2026",
+    "date": "January 15, 2026",
+    "description": "Providing warm clothes to the underprivileged people to fight the cold winter.",
+    "image": "event1.jpg",
+    "fbLink": "https://www.facebook.com/yibd/posts/1"
+  },
+  {
+    "title": "Blood Donation Camp",
+    "date": "February 10, 2026",
+    "description": "Organizing a mass blood donation program to help patients in emergency needs.",
+    "image": "event2.jpg",
+    "fbLink": "https://www.facebook.com/yibd/posts/2"
+  },
+  {
+    "title": "Tree Plantation Program",
+    "date": "June 05, 2026",
+    "description": "A green initiative to plant 1000 trees across the district for a better environment.",
+    "image": "event3.jpg",
+    "fbLink": "https://www.facebook.com/yibd/posts/3"
+  }
+]
