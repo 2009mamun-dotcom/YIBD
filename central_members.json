@@ -2,10 +2,38 @@
   {
     "id": "YIBD-CEO-151025",
     "name": "Abrarul Alam Labib",
-    "bloodGroup": "O+",
+    "bloodGroup": "B-",
     "designation": "Cheif Executive Officer",
     "location": "Mymensingh",
     "photo": "168901.jpg",
     "fbLink": "https://facebook.com/abrarul alam"
   }
+  {
+    "id": "YIBD-MD-151025",
+    "name": "Md Muhtamim Fuad Shishir",
+    "bloodGroup": "B+",
+    "designation": "Managing Director",
+    "location": "Mymensingh",
+    "photo": "168902.jpg",
+    "fbLink": "https://facebook.com/Md Muhtamim Fuad Shishir"
+  }
+  {
+    "id": "YIBD-CB-202501",
+    "name": "Md Sabbirul Haque Sabbir",
+    "bloodGroup": "AB+",
+    "designation": "Central President",
+    "location": "Mymensingh",
+    "photo": "168903.jpg",
+    "fbLink": "https://facebook.com/sabbirul haque"
+  }
+   {
+    "id": "YIBD-CB-202502",
+    "name": "Md. Nur Al Jannat (Shakil)",
+    "bloodGroup": "O+",
+    "designation": "Central Vice President",
+    "location": "Jamalpur",
+    "photo": "168904.jpg",
+    "fbLink": "https://facebook.com/Md. Nur Al Jannat "
+  }
+
 ]
