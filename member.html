@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YIBD Members</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="logo"><img src="22.jpg"> <div class="logo-text"><h1>Youth Inspiration Bangladesh</h1></div></div>
+    <nav id="menu">
+        <a href="index.html">Home</a>
+        <a href="member.html">Member</a>
+        <a href="blood_bond.html">Blood Bond</a>
+    </nav>
+</header>
+
+<section class="section">
+    <h2>Our Organizational Structure</h2>
+    <div class="board-icons">
+        <div class="icon-btn active" onclick="filterMembers('central')"><i class="fas fa-shield-halved"></i><p>Central Board</p></div>
+        <div class="icon-btn" onclick="filterMembers('divisional')"><i class="fas fa-map-location-dot"></i><p>Divisional</p></div>
+        <div class="icon-btn" onclick="filterMembers('district')"><i class="fas fa-city"></i><p>District</p></div>
+        <div class="icon-btn" onclick="filterMembers('upazila')"><i class="fas fa-building"></i><p>Upazila</p></div>
+        <div class="icon-btn" onclick="filterMembers('changemaker')"><i class="fas fa-bolt"></i><p>Changemaker</p></div>
+    </div>
+
+    <div id="memberList" class="member-grid">
+        </div>
+</section>
+
+<script>
+let allMembers = [];
+
+// Load data from JSON file
+fetch('json/members.json')
+    .then(res => res.json())
+    .then(data => {
+        allMembers = data;
+        filterMembers('central'); // Default view
+    });
+
+function filterMembers(category) {
+    const container = document.getElementById('memberList');
+    container.innerHTML = "";
+    
+    // Update active icon
+    document.querySelectorAll('.icon-btn').forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    const filtered = allMembers.filter(m => m.board === category);
+    
+    filtered.forEach(m => {
+        container.innerHTML += `
+            <div class="member-card">
+                <div class="id-header">ID: ${m.id}</div>
+                <img src="${m.photo}" class="member-photo">
+                <h3>${m.name}</h3>
+                <p class="designation">${m.designation}</p>
+                <p class="location">${m.location}</p>
+            </div>
+        `;
+    });
+}
+</script>
+</body>
+</html>
