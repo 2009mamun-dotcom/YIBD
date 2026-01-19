@@ -2,145 +2,67 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Members - Youth Inspiration Bangladesh</title>
+    <title>YIBD Members</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
 <header>
-    <div class="logo">
-        <img src="22.jpg" alt="Logo">
-        <div class="logo-text">
-            <h1>Youth Inspiration Bangladesh</h1>
-            <p>Empowering Humanity Through Youth Inspiration</p>
-        </div>
-    </div>
-    <div class="menu-icon" id="menu-btn">☰</div>
+    <div class="logo"><img src="22.jpg"> <div class="logo-text"><h1>Youth Inspiration Bangladesh</h1></div></div>
     <nav id="menu">
         <a href="index.html">Home</a>
-        <a href="member.html" style="color:#9acd32">Member</a>
-        <a href="event.html">Event</a>
+        <a href="member.html">Member</a>
         <a href="blood_bond.html">Blood Bond</a>
     </nav>
 </header>
 
-<section class="member-hero">
-    <h1>Our Dedicated Members</h1>
-    <p>The driving force behind our mission and vision.</p>
-</section>
-
 <section class="section">
+    <h2>Our Organizational Structure</h2>
     <div class="board-icons">
-        <div class="icon-btn active" onclick="loadBoard('central_members.json', this)">
-            <i class="fas fa-shield-halved"></i>
-            <p>Central Board</p>
-        </div>
-        <div class="icon-btn" onclick="loadBoard('divisional_members.json', this)">
-            <i class="fas fa-map-location-dot"></i>
-            <p>Divisional</p>
-        </div>
-        <div class="icon-btn" onclick="loadBoard('district_members.json', this)">
-            <i class="fas fa-city"></i>
-            <p>District</p>
-        </div>
-        <div class="icon-btn" onclick="loadBoard('upazila_members.json', this)">
-            <i class="fas fa-building"></i>
-            <p>Upazila</p>
-        </div>
-        <div class="icon-btn" onclick="loadBoard('changemaker_members.json', this)">
-            <i class="fas fa-bolt"></i>
-            <p>Changemaker</p>
-        </div>
+        <div class="icon-btn active" onclick="filterMembers('central')"><i class="fas fa-shield-halved"></i><p>Central Board</p></div>
+        <div class="icon-btn" onclick="filterMembers('divisional')"><i class="fas fa-map-location-dot"></i><p>Divisional</p></div>
+        <div class="icon-btn" onclick="filterMembers('district')"><i class="fas fa-city"></i><p>District</p></div>
+        <div class="icon-btn" onclick="filterMembers('upazila')"><i class="fas fa-building"></i><p>Upazila</p></div>
+        <div class="icon-btn" onclick="filterMembers('changemaker')"><i class="fas fa-bolt"></i><p>Changemaker</p></div>
     </div>
 
     <div id="memberList" class="member-grid">
         </div>
 </section>
 
-<footer>
-    <div class="footer-container">
-        <div class="footer-col">
-            <img src="22.jpg" alt="Logo" class="footer-logo">
-            <h2>Youth Inspiration Bangladesh</h2>
-            <p>Empowering Humanity Through Youth Inspiration</p>
-        </div>
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="member.html">Member</a></li>
-                <li><a href="blood_bond.html">Blood Bond</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        &copy; 2026 Youth Inspiration Bangladesh | All Rights Reserved.
-    </div>
-</footer>
-
 <script>
-    const menuBtn = document.getElementById('menu-btn');
-    const menu = document.getElementById('menu');
-    menuBtn.onclick = () => menu.classList.toggle('show');
+let allMembers = [];
 
-    // Function to load members from specific JSON files
- function loadBoard(fileName, element) {
-        // Update active class on buttons
-        document.querySelectorAll('.icon-btn').forEach(btn => btn.classList.remove('active'));
-        if(element) element.classList.add('active');
+// Load data from JSON file
+fetch('json/members.json')
+    .then(res => res.json())
+    .then(data => {
+        allMembers = data;
+        filterMembers('central'); // Default view
+    });
 
-        const container = document.getElementById('memberList');
-        container.innerHTML = `<div class="loader">Loading members...</div>`;
+function filterMembers(category) {
+    const container = document.getElementById('memberList');
+    container.innerHTML = "";
+    
+    // Update active icon
+    document.querySelectorAll('.icon-btn').forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
 
-        // "./" যোগ করা হয়েছে যাতে বর্তমান ডিরেক্টরি থেকে ফাইল নেয়
-        fetch('./' + fileName)
-            .then(res => {
-                if (!res.ok) throw new Error('File not found: ' + fileName);
-                return res.json();
-            })
-            .then(data => {
-                container.innerHTML = "";
-                if(data.length === 0) {
-                    container.innerHTML = "<p>No members found.</p>";
-                    return;
-                }
-                data.forEach(m => {
-                    container.innerHTML += `
-                        <div class="member-card">
-                            <div class="id-header">OFFICIAL ID: ${m.id}</div>
-                            <div class="card-body">
-                                <img src="${m.photo}" alt="${m.name}" class="member-photo" onerror="this.src='https://via.placeholder.com/110'">
-                                <h3>${m.name}</h3>
-                                <p class="designation">${m.designation}</p>
-                                <hr>
-                                <p class="location"><i class="fas fa-location-dot"></i> ${m.location}</p>
-                                <div class="social-links">
-                                    <a href="${m.fbLink}" target="_blank"><i class="fab fa-facebook"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                });
-            })
-            .catch(err => {
-                container.innerHTML = `<p style="color:red; padding:20px;">Error: JSON file "${fileName}" not found or format is wrong.</p>`;
-                console.error(err);
-            });
-    }
-            .catch(err => {
-                container.innerHTML = `<p style="color:red;">No members found for this board.</p>`;
-                console.error(err);
-            });
-    }
-
-    // Load Central Board by default when page opens
-    window.onload = () => {
-        const defaultBtn = document.querySelector('.icon-btn');
-        loadBoard('central_members.json', defaultBtn);
-    };
+    const filtered = allMembers.filter(m => m.board === category);
+    
+    filtered.forEach(m => {
+        container.innerHTML += `
+            <div class="member-card">
+                <div class="id-header">ID: ${m.id}</div>
+                <img src="${m.photo}" class="member-photo">
+                <h3>${m.name}</h3>
+                <p class="designation">${m.designation}</p>
+                <p class="location">${m.location}</p>
+            </div>
+        `;
+    });
+}
 </script>
 </body>
 </html>
