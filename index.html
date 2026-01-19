@@ -28,30 +28,30 @@
     </nav>
 </header>
 
-<section class="hero-container" id="hero-section">
+<section class="hero-container">
     <div class="slider-track" id="slider-track">
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('21.jpg');">
+        <div class="slide slide1">
             <div class="slide-content">
                 <img src="22.jpg" alt="Logo" class="slide-logo">
                 <h1 class="slide-title">Empowering Humanity Through Youth Inspiration</h1>
                 <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1201.jpg');">
+        <div class="slide slide2">
             <div class="slide-content">
                 <img src="22.jpg" alt="Logo" class="slide-logo">
                 <h1 class="slide-title">Join Youth Inspiration Bangladesh</h1>
                 <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('21.jpg');">
+        <div class="slide slide1">
             <div class="slide-content">
                 <img src="22.jpg" alt="Logo" class="slide-logo">
                 <h1 class="slide-title">Join the Movement</h1>
                 <a href="https://forms.gle/eumk1oioRANUL3QH8" target="_blank" class="join-btn">Join Now</a>
             </div>
         </div>
-        <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('1201.jpg');">
+        <div class="slide slide2">
             <div class="slide-content">
                 <img src="22.jpg" alt="Logo" class="slide-logo">
                 <h1 class="slide-title">Donate For Social Activities</h1>
@@ -61,26 +61,34 @@
     </div>
 </section>
 
-<section class="mission-section" id="about">
+<section class="section" id="about">
     <h2>Mission & Vision</h2>
-    <div class="mission-container">
-        <div class="mission-track" id="mission-track">
-            <div class="mission-card">
-                <i class="fas fa-bullseye"></i>
-                <h3>Mission</h3>
-                <p>To implement activities according to the 17 SDG goals of Bangladesh.</p>
-            </div>
-            <div class="mission-card">
-                <i class="fas fa-eye"></i>
-                <h3>Vision</h3>
-                <p>To build a just, poverty-free, and educated society.</p>
-            </div>
+    <div class="cards">
+        <div class="card1">
+            <i class="fas fa-bullseye icon-size"></i>
+            <h3>Mission</h3>
+            <p>To implement activities according to the 17 Sustainable Development Goals (SDG) of Bangladesh.</p>
+        </div>
+        <div class="card1">
+            <i class="fas fa-eye icon-size"></i>
+            <h3>Vision</h3>
+            <p>To build a just, poverty-free, and educated society where youth contribute to national development.</p>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section" id="contact" style="background: #fff; padding: 50px 5%; text-align: center;">
+    <h2>Contact Us</h2>
+    <div class="contact-container">
+        <p><i class="fas fa-envelope"></i> <strong>Gmail:</strong> youthinspirationbangladesh@gmail.com</p>
+        <div class="social-links-large" style="margin-top: 20px;">
+            <a href="#" target="_blank" style="color: #006400; font-weight: bold; text-decoration: none;"><i class="fab fa-facebook"></i> Facebook Page</a>
         </div>
     </div>
 </section>
 
 <footer>
-    <div class="footer-bottom">
+    <div class="footer-bottom" style="text-align: center; padding: 20px; background: #006400; color: white;">
         &copy; 2026 Youth Inspiration Bangladesh
     </div>
 </footer>
@@ -89,23 +97,20 @@
     // Menu Toggle
     document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
 
-    // Hero Slider Logic
+    // Simple Slider Logic
     const track = document.getElementById('slider-track');
     let index = 0;
+    
     function moveSlider() {
-        index = (index + 1) % 4;
+        index++;
+        if (index >= 4) {
+            index = 0;
+        }
         track.style.transform = `translateX(-${index * 100}%)`;
     }
-    setInterval(moveSlider, 5000);
 
-    // Mission Slider Logic
-    const mTrack = document.getElementById('mission-track');
-    let mIndex = 0;
-    function moveMission() {
-        mIndex = (mIndex + 1) % 2;
-        mTrack.style.transform = `translateX(-${mIndex * 100}%)`;
-    }
-    setInterval(moveMission, 4000);
+    // ৫ সেকেন্ড পর পর স্লাইড হবে (থামবে এবং চলবে)
+    setInterval(moveSlider, 5000);
 </script>
 
 </body>
