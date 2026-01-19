@@ -1,0 +1,57 @@
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menu-btn');
+const menu = document.getElementById('menu');
+
+menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('show');
+});
+
+// Scroll Reveal Animation
+function reveal() {
+    var reveals = document.querySelectorAll(".reveal");
+    for (var i = 0; i < reveals.length; i++) {
+        var windowHeight = window.innerHeight;
+        var elementTop = reveals[i].getBoundingClientRect().top;
+        var elementVisible = 150;
+        if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", reveal);
+
+// Number Counter Animation
+const counters = document.querySelectorAll('.count');
+const speed = 200;
+
+const startCounter = () => {
+    counters.forEach(counter => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const inc = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + inc);
+                setTimeout(updateCount, 20);
+            } else {
+                counter.innerText = target;
+            }
+        };
+        updateCount();
+    });
+};
+
+// Start counter when achievement section is visible
+let counterDone = false;
+window.addEventListener('scroll', () => {
+    const achSection = document.getElementById('achievement');
+    const sectionPos = achSection.getBoundingClientRect().top;
+    const screenPos = window.innerHeight;
+
+    if (sectionPos < screenPos && !counterDone) {
+        startCounter();
+        counterDone = true;
+    }
+});
