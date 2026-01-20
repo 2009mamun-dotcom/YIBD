@@ -55,3 +55,30 @@ window.addEventListener('scroll', () => {
         counterDone = true;
     }
 });
+// Mobile Menu
+document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
+
+// Hero Slider
+const hTrack = document.getElementById('slider-track');
+let hIndex = 0;
+setInterval(() => {
+    hIndex = (hIndex + 1) % 4;
+    if(hTrack) hTrack.style.left = `-${hIndex * 100}%`;
+}, 5000);
+
+// Fetch Gallery from JSON
+fetch('gallery.json')
+    .then(response => response.json())
+    .then(data => {
+        const galleryContainer = document.getElementById('gallery-container');
+        data.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            div.innerHTML = `
+                <img src="${item.img}" alt="${item.caption}">
+                <div class="gallery-overlay">${item.caption}</div>
+            `;
+            galleryContainer.appendChild(div);
+        });
+    })
+    .catch(error => console.error('Error loading gallery:', error));
