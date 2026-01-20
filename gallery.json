@@ -1,8 +1,8 @@
 [
-    { "image": "21.jpg" },
-    { "image": "1201.jpg" },
-    { "image": "22.jpg" },
-    { "image": "21.jpg" },
-    { "image": "1201.jpg" },
-    { "image": "22.jpg" }
+    { "img": "21.jpg", "caption": "Education Project" },
+    { "img": "1201.jpg", "caption": "Winter Clothing Distribution" },
+    { "img": "22.jpg", "caption": "Tree Plantation" },
+    { "img": "21.jpg", "caption": "Youth Awareness" },
+    { "img": "1201.jpg", "caption": "Health Camp" },
+    { "img": "22.jpg", "caption": "SDG Goal Activity" }
 ]
