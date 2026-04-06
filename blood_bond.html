@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>বাল্যবিবাহ প্রতিরোধ অভিযোগ ফর্ম</title>
     <style>
+        /* কালার এবং ডিজাইন সেটআপ */
         :root {
-            --primary-red: #e63946;
-            --dark-red: #c1121f;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-dark: #1d3557;
+            --primary-red: #d90429;
+            --dark-red: #8d0801;
+            --light-bg: #edf2f4;
+            --white: #ffffff;
+            --text-color: #2b2d42;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
+            background-color: var(--light-bg);
             margin: 0;
             padding: 20px;
             display: flex;
@@ -24,13 +25,13 @@
             min-height: 100vh;
         }
 
-        .form-container {
-            background: var(--card-bg);
+        .form-card {
+            background: var(--white);
             width: 100%;
             max-width: 500px;
-            padding: 35px;
+            padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             border-top: 10px solid var(--primary-red);
         }
 
@@ -41,10 +42,9 @@
 
         .header h1 {
             color: var(--primary-red);
-            font-size: 26px;
+            font-size: 28px;
             margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: bold;
         }
 
         .header p {
@@ -53,26 +53,27 @@
             margin-top: 5px;
         }
 
-        .alert-box {
-            background-color: #fff3cd;
-            color: #856404;
+        .emergency-alert {
+            background-color: #ffe5e5;
+            color: #b91c1c;
             padding: 12px;
             border-radius: 8px;
             font-size: 13px;
             text-align: center;
-            margin-bottom: 20px;
-            border: 1px solid #ffeeba;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--primary-red);
+            font-weight: bold;
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
-            color: var(--text-dark);
+            color: var(--text-color);
         }
 
         input[type="text"],
@@ -81,7 +82,7 @@
         textarea {
             width: 100%;
             padding: 12px;
-            border: 2px solid #dee2e6;
+            border: 2px solid #ddd;
             border-radius: 10px;
             box-sizing: border-box;
             font-size: 15px;
@@ -91,44 +92,83 @@
         input:focus, textarea:focus {
             border-color: var(--primary-red);
             outline: none;
-            box-shadow: 0 0 10px rgba(230, 57, 70, 0.1);
+            box-shadow: 0 0 8px rgba(217, 4, 41, 0.2);
         }
 
-        .submit-btn {
-            background-color: var(--primary-red);
+        .submit-button {
+            background: linear-gradient(to right, var(--primary-red), var(--dark-red));
             color: white;
-            padding: 15px;
+            padding: 16px;
             border: none;
             border-radius: 10px;
             width: 100%;
             font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             margin-top: 10px;
         }
 
-        .submit-btn:hover {
-            background-color: var(--dark-red);
-            box-shadow: 0 5px 15px rgba(193, 18, 31, 0.3);
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(217, 4, 41, 0.4);
         }
 
-        .footer-text {
+        .footer {
             text-align: center;
             font-size: 12px;
-            color: #888;
-            margin-top: 20px;
+            color: #999;
+            margin-top: 25px;
         }
     </style>
 </head>
 <body>
 
-<div class="form-container">
+<div class="form-card">
     <div class="header">
         <h1>বাল্যবিবাহ প্রতিরোধ</h1>
-        <p>একটি সুন্দর সমাজ গড়তে সহায়তা করুন</p>
+        <p>আপনার একটি তথ্য বাঁচাতে পারে একটি প্রাণ</p>
     </div>
 
-    <div class="alert-box">
-        <strong>গোপনীয়তা নিশ্চিত:</strong> আপনার সকল তথ্য আমাদের কাছে নিরাপদ থাকবে।
+    <div class="emergency-alert">
+        গোপনীয়তা নিশ্চিত: আপনার পরিচয় প্রকাশ করা হবে না।
     </div>
+
+    <form action="https://formspree.io/f/xnjolvzw" method="POST">
+        
+        <div class="form-group">
+            <label for="name">আপনার নাম (Your Name):</label>
+            <input type="text" id="name" name="Reporter_Name" placeholder="নাম লিখুন" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">মোবাইল নম্বর (Phone Number):</label>
+            <input type="tel" id="phone" name="Mobile_Number" placeholder="০১XXXXXXXXX" required>
+        </div>
+
+        <div class="form-group">
+            <label for="location">ঠিকানা বিস্তারিত (Location):</label>
+            <textarea id="location" name="Event_Location" rows="3" placeholder="গ্রাম, ইউনিয়ন, থানা ও জেলা..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="reason">অভিযোগের কারণ (Reason):</label>
+            <textarea id="reason" name="Complaint_Reason" rows="3" placeholder="ঘটনার বর্ণনা দিন..." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="age">সম্ভাব্য বয়স (Estimated Age):</label>
+            <input type="number" id="age" name="Suspect_Age" placeholder="বয়স (যদি জানা থাকে)">
+        </div>
+
+        <button type="submit" class="submit-button">অভিযোগ জমা দিন</button>
+    </form>
+
+    <div class="footer">
+        © 2026 All Rights Reserved . Designed By Mamun. <br>
+        দেশ ও সমাজ রক্ষায় এগিয়ে আসুন।
+    </div>
+</div>
+
+</body>
+</html>
