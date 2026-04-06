@@ -3,51 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Complaint Submission Form</title>
+    <title>বাল্যবিবাহ প্রতিরোধ অভিযোগ ফর্ম</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
-        .form-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
-        h2 { text-align: center; color: #333; margin-bottom: 20px; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
-        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
-        input[type="text"], input[type="tel"], input[type="number"], textarea, input[type="file"] {
-            width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px;
+        :root {
+            --primary-red: #e63946;
+            --dark-red: #c1121f;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #1d3557;
         }
-        textarea { resize: vertical; }
-        button {
-            width: 100%; background-color: #007bff; color: white; border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: background 0.3s;
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
-        button:hover { background-color: #0056b3; }
-        .note { font-size: 12px; color: #777; margin-top: 10px; text-align: center; }
+
+        .form-container {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 10px solid var(--primary-red);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            color: var(--primary-red);
+            font-size: 26px;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            color: #555;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .alert-box {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 1px solid #ffeeba;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-red);
+            outline: none;
+            box-shadow: 0 0 10px rgba(230, 57, 70, 0.1);
+        }
+
+        .submit-btn {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--dark-red);
+            box-shadow: 0 5px 15px rgba(193, 18, 31, 0.3);
+        }
+
+        .footer-text {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
 
-<div class="form-card">
-    <h2>অভিযোগ ফরম</h2>
-    
-    <form action="https://formspree.io/f/xnjolvzw" method="POST" enctype="multipart/form-data">
-        
-        <label for="name">আপনার নাম (Full Name):</label>
-        <input type="text" id="name" name="Full Name" placeholder="নাম লিখুন" required>
+<div class="form-container">
+    <div class="header">
+        <h1>বাল্যবিবাহ প্রতিরোধ</h1>
+        <p>একটি সুন্দর সমাজ গড়তে সহায়তা করুন</p>
+    </div>
 
-        <label for="phone">মোবাইল নম্বর (Mobile Number):</label>
-        <input type="tel" id="phone" name="Phone Number" placeholder="০১XXXXXXXXX" required>
-
-        <label for="location">ঠিকানা বিস্তারিত (Location Details):</label>
-        <textarea id="location" name="Location" rows="3" placeholder="গ্রাম, থানা, জেলা..." required></textarea>
-
-        <label for="reason">অভিযোগের কারণ (Reason):</label>
-        <textarea id="reason" name="Complaint Reason" rows="4" placeholder="আপনার অভিযোগটি লিখুন" required></textarea>
-
-        <label for="age">সন্দেহভাজনের বয়স (Suspect Age):</label>
-        <input type="number" id="age" name="Suspect Age" placeholder="বয়স (যদি জানা থাকে)">
-
-     
-        <button type="submit">অভিযোগ জমা দিন</button>
-        
-        <p class="note">* তথ্য সাবমিট করার পর স্বয়ংক্রিয়ভাবে ইমেইল চলে যাবে।</p>
-    </form>
-</div>
-
-</body>
-</html>
+    <div class="alert-box">
+        <strong>গোপনীয়তা নিশ্চিত:</strong> আপনার সকল তথ্য আমাদের কাছে নিরাপদ থাকবে।
+    </div>
