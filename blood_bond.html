@@ -1,217 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blood Bond - Youth Inspiration Bangladesh</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Complaint Submission Form</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px; }
+        .form-card { background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 500px; }
+        h2 { text-align: center; color: #333; margin-bottom: 20px; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
+        input[type="text"], input[type="tel"], input[type="number"], textarea, input[type="file"] {
+            width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; font-size: 14px;
+        }
+        textarea { resize: vertical; }
+        button {
+            width: 100%; background-color: #007bff; color: white; border: none; padding: 15px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: background 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        .note { font-size: 12px; color: #777; margin-top: 10px; text-align: center; }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">
-        <img src="22.jpg" alt="Logo">
-        <div class="logo-text">
-            <h1>Youth Inspiration Bangladesh</h1>
-            <p>Empowering Humanity Through Youth Inspiration</p>
-        </div>
-    </div>
-    <div class="menu-icon" id="menu-btn">☰</div>
-    <nav id="menu">
-        <a href="index.html">Home</a>
-        <a href="member.html">Member</a>
-        <a href="event.html">Event</a>
-        <a href="blood_bond.html" class="active" style="color:#9acd32">Blood Bond</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
-</header>
-
-<section class="blood-hero">
-    <div class="hero-content">
-        <h1>🩸 Blood Bond Program</h1>
-        <p>Donate Blood, Save Lives. Connect with donors across the country.</p>
-    </div>
-</section>
-
-<div class="container">
-    <div class="grid">
-        <div class="section-card">
-            <h3><i class="fas fa-plus-circle"></i> Donor Registration</h3>
-            <form id="donorForm">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="name" placeholder="Enter name" required>
-                </div>
-                <div class="form-group">
-                    <label>Phone Number</label>
-                    <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
-                </div>
-                <div class="form-group">
-                    <label>District</label>
-                    <input type="text" id="district" placeholder="Your District" required>
-                </div>
-                <div class="form-group">
-                    <label>Blood Group</label>
-                    <select id="blood" required>
-                        <option value="">Select</option>
-                        <option>A+</option><option>A-</option>
-                        <option>B+</option><option>B-</option>
-                        <option>AB+</option><option>AB-</option>
-                        <option>O+</option><option>O-</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary" style="width: 100%; background: #d32f2f;">Register Now</button>
-            </form>
-        </div>
-
-        <div>
-            <div class="section-card">
-                <h3><i class="fas fa-chart-bar"></i> Blood Statistics</h3>
-                <div class="stats-box">
-                    <div>
-                        <p>Total Donors</p>
-                        <h1 id="totalCount">0</h1>
-                    </div>
-                    <canvas id="bloodChart" width="200" height="100"></canvas>
-                </div>
-            </div>
-            <div class="section-card">
-                <h3><i class="fas fa-search"></i> Search Donor</h3>
-                <input type="text" id="searchDonor" placeholder="Search by Blood Group or District..." onkeyup="filterDonors()">
-            </div>
-        </div>
-    </div>
-
-    <div class="section-card" style="margin-top: 20px;">
-        <h3><i class="fas fa-list"></i> Registered Donors</h3>
-        <div style="overflow-x:auto;">
-            <table id="donorTable">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Blood Group</th>
-                        <th>District</th>
-                        <th>Contact</th>
-                    </tr>
-                </thead>
-                <tbody id="donorList">
-                    </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<footer class="modern-footer" id="contact">
-    <div class="footer-top">
-        <div class="footer-col about">
-            <img src="22.jpg" alt="Logo" class="footer-logo">
-            <h3>Youth Inspiration Bangladesh</h3>
-            <p>Empowering Humanity Through Youth Inspiration. We work for social justice, education, and health.</p>
-            <br>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/profile.php?id=61582014582315"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/youthinspirationbangladesh?igsh=MzZneTgxNTg5M3Bv"><i class="fab fa-instagram"></i></a>
-                <a href="https://youtube.com/@yibd-g11?si=LXEQeCXd_pLnX_su"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="footer-col links">
-            <h4>Quick Links</h4>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="member.html">Member</a></li>
-                <li><a href="event.html">Recent Events</a></li>
-                <li><a href="blood_bond.html">Blood Bond</a></li>
-            </ul>
-        </div>
-        <div class="footer-col contact">
-            <h4>Contact Info</h4>
-            <p><i class="fas fa-map-marker-alt"></i> Sherpur,Mymensingh, Bangladesh</p>
-            <p><i class="fas fa-phone"></i> +880 1798-864176</p>
-            <p><i class="fas fa-envelope"></i> youthinspirationbangladesh@gmail.com</p>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2026 Youth Inspiration Bangladesh | Designed by <b>Mamun</b></p>
-    </div>
-</footer><script>
-    // LocalStorage initialization
-    let donors = JSON.parse(localStorage.getItem('yibd_donors')) || [];
-
-    // Load initial data from JSON if available
-    fetch('donors.json')
-    .then(res => res.json())
-    .then(data => {
-        // Merge JSON data with local storage data (prevent duplicates)
-        const combined = [...data, ...donors];
-        const unique = combined.filter((v,i,a)=>a.findIndex(t=>(t.phone === v.phone))===i);
-        renderDonors(unique);
-    })
-    .catch(() => renderDonors(donors));
-
-    // Form Submit
-    document.getElementById('donorForm').onsubmit = function(e) {
-        e.preventDefault();
-        const newDonor = {
-            name: document.getElementById('name').value,
-            phone: document.getElementById('phone').value,
-            district: document.getElementById('district').value,
-            blood: document.getElementById('blood').value
-        };
-        donors.push(newDonor);
-        localStorage.setItem('yibd_donors', JSON.stringify(donors));
-        alert("Registration Successful!");
-        location.reload();
-    };
-
-    function renderDonors(list) {
-        const listBody = document.getElementById('donorList');
-        listBody.innerHTML = "";
-        list.forEach(d => {
-            listBody.innerHTML += `
-                <tr>
-                    <td>${d.name}</td>
-                    <td><span class="blood-badge">${d.blood}</span></td>
-                    <td>${d.district}</td>
-                    <td><a href="tel:${d.phone}" class="call-btn"><i class="fas fa-phone"></i> ${d.phone}</a></td>
-                </tr>
-            `;
-        });
-        document.getElementById('totalCount').innerText = list.length;
-        drawChart(list);
-    }
-
-    function filterDonors() {
-        let key = document.getElementById('searchDonor').value.toLowerCase();
-        let filtered = donors.filter(d => 
-            d.blood.toLowerCase().includes(key) || 
-            d.district.toLowerCase().includes(key)
-        );
-        renderDonors(filtered);
-    }
-
-    function drawChart(list) {
-        const canvas = document.getElementById('bloodChart');
-        const ctx = canvas.getContext('2d');
-        ctx.clearRect(0,0, canvas.width, canvas.height);
-        let groups = {"A+":0,"B+":0,"O+":0,"AB+":0,"A-":0,"B-":0,"O-":0,"AB-":0};
-        list.forEach(d => groups[d.blood]++);
+<div class="form-card">
+    <h2>অভিযোগ ফরম</h2>
+    
+    <form action="https://formspree.io/f/xnjolvzw" method="POST" enctype="multipart/form-data">
         
-        let x = 10;
-        for (let g in groups) {
-            let h = groups[g] * 10;
-            ctx.fillStyle = "#d32f2f";
-            ctx.fillRect(x, 80-h, 15, h);
-            ctx.fillStyle = "#333";
-            ctx.font = "10px Arial";
-            ctx.fillText(g, x, 95);
-            x += 24;
-        }
-    }
+        <label for="name">আপনার নাম (Full Name):</label>
+        <input type="text" id="name" name="Full Name" placeholder="নাম লিখুন" required>
 
-    document.getElementById('menu-btn').onclick = () => document.getElementById('menu').classList.toggle('show');
-</script>
+        <label for="phone">মোবাইল নম্বর (Mobile Number):</label>
+        <input type="tel" id="phone" name="Phone Number" placeholder="০১XXXXXXXXX" required>
+
+        <label for="location">ঠিকানা বিস্তারিত (Location Details):</label>
+        <textarea id="location" name="Location" rows="3" placeholder="গ্রাম, থানা, জেলা..." required></textarea>
+
+        <label for="reason">অভিযোগের কারণ (Reason):</label>
+        <textarea id="reason" name="Complaint Reason" rows="4" placeholder="আপনার অভিযোগটি লিখুন" required></textarea>
+
+        <label for="age">সন্দেহভাজনের বয়স (Suspect Age):</label>
+        <input type="number" id="age" name="Suspect Age" placeholder="বয়স (যদি জানা থাকে)">
+
+        <label for="proof">বয়সের প্রমাণ (Age Proof - Birth Certificate):</label>
+        <input type="file" id="proof" name="Attachment" accept="image/*,.pdf" required>
+
+        <button type="submit">অভিযোগ জমা দিন</button>
+        
+        <p class="note">* তথ্য সাবমিট করার পর স্বয়ংক্রিয়ভাবে ইমেইল চলে যাবে।</p>
+    </form>
+</div>
 
 </body>
 </html>
